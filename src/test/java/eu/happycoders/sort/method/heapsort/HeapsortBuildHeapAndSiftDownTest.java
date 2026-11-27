@@ -1,6 +1,6 @@
 package eu.happycoders.sort.method.heapsort;
 
-class HeapsortBuildHeapAndHeapifyTest extends BuildHeapAndHeapifyTest {
+class HeapsortBuildHeapAndSiftDownTest extends BuildHeapAndSiftDownTest {
 
   @Override
   protected Heapsort getSortAlgorithm() {

@@ -17,7 +17,7 @@ public class BottomUpHeapsort extends Heapsort {
    * @param rootPos the parent position
    */
   @Override
-  void heapify(int[] heap, int length, int rootPos) {
+  void siftDown(int[] heap, int length, int rootPos) {
     int leafPos = findLeaf(heap, length, rootPos);
     int nodePos = findTargetNodeBottomUp(heap, rootPos, leafPos);
 
@@ -75,7 +75,7 @@ public class BottomUpHeapsort extends Heapsort {
   }
 
   @Override
-  void heapifyWithCounters(int[] heap, int length, int rootPos, Counters counters) {
+  void siftDownWithCounters(int[] heap, int length, int rootPos, Counters counters) {
     int leafPos = findLeafWithCounters(heap, length, rootPos, counters);
     int nodePos = findTargetNodeBottomUpWithCounters(heap, rootPos, leafPos, counters);
 

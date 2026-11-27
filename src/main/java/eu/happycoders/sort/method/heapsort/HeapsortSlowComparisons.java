@@ -20,7 +20,7 @@ public class HeapsortSlowComparisons extends Heapsort {
    * @param parentPos the parent position
    */
   @Override
-  void heapify(int[] heap, int length, int parentPos) {
+  void siftDown(int[] heap, int length, int parentPos) {
     while (true) {
       int leftChildPos = parentPos * 2 + 1;
       int rightChildPos = parentPos * 2 + 2;

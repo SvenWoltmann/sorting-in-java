@@ -22,7 +22,7 @@ public class Heapsort implements SortAlgorithm {
       ArrayUtils.swap(elements, 0, swapToPos);
 
       // Fix remaining heap
-      heapify(elements, swapToPos, 0);
+      siftDown(elements, swapToPos, 0);
     }
   }
 
@@ -35,9 +35,9 @@ public class Heapsort implements SortAlgorithm {
     // "Find" the last parent node
     int lastParentNode = elements.length / 2 - 1;
 
-    // Now heapify it from here on backwards
+    // Now sift down every parent from here on backwards
     for (int i = lastParentNode; i >= 0; i--) {
-      heapify(elements, elements.length, i);
+      siftDown(elements, elements.length, i);
     }
   }
 
@@ -48,7 +48,7 @@ public class Heapsort implements SortAlgorithm {
    * @param length the number of elements in the array that belong to the heap
    * @param parentPos the parent position
    */
-  void heapify(int[] heap, int length, int parentPos) {
+  void siftDown(int[] heap, int length, int parentPos) {
     while (true) {
       int leftChildPos = parentPos * 2 + 1;
       int rightChildPos = parentPos * 2 + 2;
@@ -89,7 +89,7 @@ public class Heapsort implements SortAlgorithm {
       countersPhase2.addReadsAndWrites(2);
 
       // Fix remaining heap
-      heapifyWithCounters(elements, swapToPos, 0, countersPhase2);
+      siftDownWithCounters(elements, swapToPos, 0, countersPhase2);
     }
   }
 
@@ -100,11 +100,11 @@ public class Heapsort implements SortAlgorithm {
     // Now fix it from here on backwards
     for (int i = lastParentNode; i >= 0; i--) {
       counters.incIterations();
-      heapifyWithCounters(elements, elements.length, i, counters);
+      siftDownWithCounters(elements, elements.length, i, counters);
     }
   }
 
-  void heapifyWithCounters(int[] heap, int length, int parentPos, Counters counters) {
+  void siftDownWithCounters(int[] heap, int length, int parentPos, Counters counters) {
     while (true) {
       counters.incIterations();
       int leftChildPos = parentPos * 2 + 1;
